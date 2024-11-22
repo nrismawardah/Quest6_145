@@ -85,7 +85,23 @@ fun TampilDataView(
                     shape = RoundedCornerShape(topEnd = 15.dp, topStart = 15.dp)
                 )
         ){
-
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                Text(
+                    text = "Berikut Data Anda",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                TampilData(param = "NIM", argu = mhsState.nim)
+                TampilData(param = "Nama", argu = mhsState.nama)
+                TampilData(param = "Email", argu = mhsState.email)
+                TampilData(param = "MataKuliah", argu = rstdState.namaMK)
+                TampilData(param = "Kelas", argu = rstdState.kelas)
+            }
         }
     }
 }
