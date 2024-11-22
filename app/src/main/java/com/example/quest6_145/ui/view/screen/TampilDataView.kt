@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.quest6_145.R
 import com.example.quest6_145.ui.model.Mahasiswa
 import com.example.quest6_145.ui.model.RencanaStudi
@@ -30,7 +33,10 @@ import com.example.quest6_145.ui.model.RencanaStudi
 fun TampilDataView(
     modifier: Modifier = Modifier,
     mhsState: Mahasiswa,
-    rstdState: RencanaStudi
+    rstdState: RencanaStudi,
+    navController: NavHostController,
+    onBackButtonClicked: () -> Unit,
+    onResetButtonClicked: () -> Unit
 ){
     Column(
         modifier = Modifier
@@ -41,9 +47,6 @@ fun TampilDataView(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(
-            modifier = Modifier.padding(16.dp)
-        )
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -60,13 +63,11 @@ fun TampilDataView(
                     color = Color.Yellow,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(5.dp)
                 )
                 Text(
                     text = "Unggul dan Islami",
                     color = Color.Yellow,
                     fontWeight = FontWeight.Light,
-                    modifier = Modifier.padding(5.dp)
                 )
                 Spacer(
                     modifier = Modifier.padding(10.dp)
@@ -101,6 +102,30 @@ fun TampilDataView(
                 TampilData(param = "Email", argu = mhsState.email)
                 TampilData(param = "MataKuliah", argu = rstdState.namaMK)
                 TampilData(param = "Kelas", argu = rstdState.kelas)
+
+                Spacer(
+                    modifier = Modifier
+                        .padding(10.dp)
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Button(onClick = { onBackButtonClicked() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(id = R.color.primary)
+                        )
+                    ){
+                        Text(text = "Kembali")
+                    }
+                    Button(onClick = { onResetButtonClicked() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(id = R.color.primary)
+                        )
+                    ){
+                        Text("Ulang")
+                    }
+                }
             }
         }
     }
