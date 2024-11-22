@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quest6_145.R
 
-@Preview (showBackground = true)
 @Composable
 fun SplashView(
-) {
+    onMulaiButton: ()->Unit,
+){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,7 +67,7 @@ fun SplashView(
             color = Color.White
         )
         Button(
-            onClick = {  },
+            onClick = { onMulaiButton() },
             modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp),
