@@ -47,7 +47,9 @@ import com.example.quest6_145.ui.widget.DynamicSelectedField
 
 @Composable
 fun RencanaStudyView(
-    mahasiswa: Mahasiswa
+    mahasiswa: Mahasiswa,
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onBackButtonClicked: () -> Unit
 ){
     var chosenDropdown by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
@@ -215,13 +217,13 @@ fun RencanaStudyView(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Button(onClick = {  },
+                    Button(onClick = { onBackButtonClicked },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Yellow)
                     ){
                         Text(text = "Kembali")
                     }
-                    Button(onClick = {  }, enabled = checked,
+                    Button(onClick = { onSubmitButtonClicked(listData) }, enabled = checked,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Yellow)
                     ){
