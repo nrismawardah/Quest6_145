@@ -60,6 +60,10 @@ fun RencanaStudyView(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(
+                color = colorResource(
+                    id = R.color.primary)
+                )
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -210,22 +214,25 @@ fun RencanaStudyView(
                         fontSize = 10.sp
                     )
                 }
-
-                Spacer(modifier = Modifier.padding(8.dp))
-
+                Spacer(
+                    modifier = Modifier
+                    .padding(8.dp)
+                )
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Button(onClick = { onBackButtonClicked },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Yellow)
+                            containerColor = colorResource(id = R.color.primary)
+                        )
                     ){
                         Text(text = "Kembali")
                     }
                     Button(onClick = { onSubmitButtonClicked(listData) }, enabled = checked,
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Yellow)
+                            containerColor = colorResource(id = R.color.primary)
+                        )
                     ){
                         Text(text = "Lanjut")
                     }
