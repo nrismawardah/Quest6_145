@@ -78,7 +78,8 @@ fun SplashView(
                 text = "Mulai",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black)
+                color = Color.Black
+            )
         }
     }
 }
