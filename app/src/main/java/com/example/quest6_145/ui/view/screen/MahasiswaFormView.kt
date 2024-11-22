@@ -40,9 +40,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quest6_145.R
 
-@Preview (showBackground = true)
 @Composable
-fun MahasiswaFormView() {
+fun MahasiswaFormView(
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onBackButtonClicked: () -> Unit
+){
 
     var nim by remember { mutableStateOf("") }
     var nama by remember { mutableStateOf("") }
@@ -183,14 +185,14 @@ fun MahasiswaFormView() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Button(onClick = {  },
+                    Button(onClick = { onBackButtonClicked() },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(id = R.color.primary)
                         )
                     ){
                         Text(text = "Kembali")
                     }
-                    Button(onClick = {  },
+                    Button(onClick = { onSubmitButtonClicked(listDataMhs) },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(id = R.color.primary)
                         )
