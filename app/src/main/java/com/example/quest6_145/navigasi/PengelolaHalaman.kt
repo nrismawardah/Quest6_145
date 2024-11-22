@@ -11,7 +11,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quest6_145.ui.model.Mahasiswa
+import com.example.quest6_145.ui.model.RencanaStudi
 import com.example.quest6_145.ui.view.screen.MahasiswaFormView
+import com.example.quest6_145.ui.view.screen.RencanaStudyView
 import com.example.quest6_145.ui.view.screen.SplashView
 import com.example.quest6_145.ui.view.viewmodel.MahasiswaViewModel
 import com.example.quest6_145.ui.view.viewmodel.RencanaStudyViewModel
@@ -56,6 +58,16 @@ fun MahasiswaApp(
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
+            )
+        }
+        composable(route = Halaman.Matakuliah.name) {
+            RencanaStudyView(
+                mahasiswa = mahasiswaUiState,
+                onSubmitButtonClicked = { listData ->
+                    krsViewModel.saveDataKRS(RencanaStudi(namaMK = listData[0], kelas = listData[1]))
+                    navController.navigate(Halaman.Tampil.name)
+                },
+                onBackButtonClicked = { navController.popBackStack() }
             )
         }
     }
