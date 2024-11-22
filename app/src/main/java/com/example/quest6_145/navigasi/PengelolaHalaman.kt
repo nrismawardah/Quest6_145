@@ -1,10 +1,14 @@
 package com.example.quest6_145.navigasi
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.quest6_145.ui.view.viewmodel.MahasiswaViewModel
+import com.example.quest6_145.ui.view.viewmodel.RencanaStudyViewModel
 
 enum class Halaman {
     Splash,
@@ -20,5 +24,6 @@ fun MahasiswaApp(
     krsViewModel: RencanaStudyViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ){
-
+    val mahasiswaUiState by mahasiswaViewModel.mahasiswaUiState.collectAsState()
+    val krsStateUi by krsViewModel.krsStateUi.collectAsState()
 }
